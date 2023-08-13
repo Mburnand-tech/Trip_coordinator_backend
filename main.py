@@ -12,7 +12,6 @@ app.add_middleware(
     allow_credentials = True,
     allow_methods=["*"],
     allow_headers=["*"],
-
 )
 
 ## GET requests
@@ -21,17 +20,17 @@ app.add_middleware(
 def read_root():
     return {"Ping":"Pongy"}
 
-# get a group, by a group id which has been shared
-@app.get("/tripgroup/{id}")
-def get_group_by_id(id):
-    return {"msg":"Get trip group"}
 
 ## POST requests
-# create a new group, in the group database
+# Add new user to a group already created
+@app.post("/createuser")
+def addUser(group_id, username):
+    return {"msg": "matts building endpoint to add {username} to {group_id}"}
 
 
 ## UPDATE requests
-# Update 
+
 
 
 ## DELETE requests
+
