@@ -52,12 +52,12 @@ async def get_group_exists(group_id: str):
 # def addUser(body: User):
 #     return {"msg": "matts building endpoint to add {body.username} to {body.group_id}"}
 
-@app.post("/creategroup")
+@app.post("/creategroup", response_model=User)
 async def post_new_group(group_id: User):
-    response = await create_new_group(group_id)
+    response = await create_new_group(group_id.dict())
     if response:
         return response
-    raise HTTPException(404, f"group id doesn't exist from MATT")
+    raise HTTPException(400, f"group id doesn't exist from MATT")
 
 ## UPDATE requests
 
